@@ -82,7 +82,7 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        if(A == null){ //A和A.rest 比较
+        if(A == null){ 
             A = B;
             return A;
         }
@@ -90,7 +90,7 @@ public class IntList {
             A.rest = B;
             return A;
         }
-        dcatenate(A.rest,B);//逼近最后一个
+        dcatenate(A.rest,B);
         return A;
     }
 
