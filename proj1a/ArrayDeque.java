@@ -9,8 +9,8 @@ public class ArrayDeque<T> {
         //array = new int[8];
         array = (T[]) new Object[8];
         size = 0;
-        nextFirst = 4;
-        nextLast = 5;
+        nextFirst = 7;
+        nextLast = 0;
     }
 
     public void addLast(T item) {
@@ -56,12 +56,13 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        T a = array[nextFirst];
         nextFirst = nextFirst + 1;
         if (nextFirst == 8) {
             nextFirst = 0;
         }
+        T a = array[nextFirst];
         array[nextFirst] = null;
+        size = size - 1;
         return a;
     }
 
@@ -69,12 +70,14 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        T a = array[nextLast];
         nextLast = nextLast - 1;
         if (nextLast == -1) {
             nextLast = 7;
         }
+        T a = array[nextLast];
         array[nextLast] = null;
+        size = size - 1;
         return a;
     }
+
 }
