@@ -112,11 +112,4 @@ public class LinkedListDeque<T> {
         }
     }
 
-    public static void main(String[] args) {
-        LinkedListDeque<Integer> l = new LinkedListDeque<>();
-        l.addFirst(0);
-        l.addFirst(1);
-        int a = l.removeFirst();
-        System.out.println(a);
-    }
 }
