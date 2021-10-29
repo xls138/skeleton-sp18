@@ -19,11 +19,11 @@ public class ArrayDeque<T> {
         T[] a = (T[]) new Object[capacity];
         for (int i = 1; i <= size; i++) {
             a[i] = array[(++nextFirst) % this.capacity];
-            this.capacity = capacity;
-            nextFirst = 0;//i=1;
-            nextLast = size + 1;
-            array = a;
         }
+        this.capacity = capacity;
+        nextFirst = 0;//i=1;
+        nextLast = size + 1;
+        array = a;
     }
 
     public void addLast(T item) {
@@ -57,8 +57,12 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        for (int i = (nextFirst + 1) % capacity; i != nextLast - 1; i = (i + 1) % capacity)
+        if(nextLast == 0){
+            nextLast = capacity;
+        }
+        for (int i = (nextFirst + 1) % capacity; i != nextLast - 1; i = (i + 1) % capacity) {
             System.out.print(array[i] + " ");
+        }
         System.out.print(array[nextLast - 1]);
     }
 
@@ -87,6 +91,5 @@ public class ArrayDeque<T> {
             resize(capacity / 2);
         return a;
     }
-
 
 }
