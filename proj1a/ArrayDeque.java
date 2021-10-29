@@ -30,7 +30,7 @@ public class ArrayDeque<T> {
         if (size == capacity)
             resize(capacity * 2);
         array[nextLast] = item;
-        size = size++;
+        size++;
         nextLast = (nextLast + 1) % capacity;
     }
 
@@ -69,7 +69,7 @@ public class ArrayDeque<T> {
         nextFirst = (nextFirst + 1) % capacity;
         T a = array[nextFirst];
         array[nextFirst] = null;
-        size = size - 1;
+        size--;
         if (capacity >= 16 && size < capacity / 4)
             resize(capacity / 2);
         return a;
@@ -82,7 +82,7 @@ public class ArrayDeque<T> {
         nextLast = nextLast == 0 ? capacity - 1 : nextLast - 1;
         T a = array[nextLast];
         array[nextLast] = null;
-        size = size - 1;
+        size--;
         if (capacity >= 16 && size < capacity / 4)
             resize(capacity / 2);
         return a;
