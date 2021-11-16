@@ -2,7 +2,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TestPalindrome {
-    /*// You must use this palindrome, and not instantiate
+    ///*
+    // You must use this palindrome, and not instantiate
     // new Palindromes, or the autograder might be upset.
     static Palindrome palindrome = new Palindrome();
 
@@ -14,5 +15,37 @@ public class TestPalindrome {
             actual += d.removeFirst();
         }
         assertEquals("persiflage", actual);
-    } Uncomment this class once you've created your Palindrome class. */
+    }
+    //Uncomment this class once you've created your Palindrome class.
+    //*/
+    @Test
+    public void testisPalindrome(){
+        assertFalse(palindrome.isPalindrome("fuckyou"));
+        assertFalse(palindrome.isPalindrome("sonofbitch"));
+        assertFalse(palindrome.isPalindrome("youfuckingidiot"));
+        assertTrue(palindrome.isPalindrome("abcdcba"));
+        assertTrue(palindrome.isPalindrome("a"));
+        assertFalse(palindrome.isPalindrome("ababssba"));
+        assertTrue(palindrome.isPalindrome(""));
+    }
+    @Test
+    public void testIsPalidromeOffByOne(){
+        CharacterComparator offByOne = new OffByOne();
+        assertFalse(palindrome.isPalindrome("fuckyou",offByOne));
+        assertFalse(palindrome.isPalindrome("sonofbitch",offByOne));
+        assertFalse(palindrome.isPalindrome("youfuckingidiot",offByOne));
+        assertTrue(palindrome.isPalindrome("flake",offByOne));
+        assertTrue(palindrome.isPalindrome("a",offByOne));
+        assertFalse(palindrome.isPalindrome("ababssba",offByOne));
+        assertTrue(palindrome.isPalindrome("",offByOne));
+    }
+    @Test
+    public void testIsPalidromeOffByN(){
+        CharacterComparator offByN = new OffByN(2);
+        assertTrue(palindrome.isPalindrome("acsac",offByN));
+        assertFalse(palindrome.isPalindrome("ass",offByN));
+        assertTrue(palindrome.isPalindrome("",offByN));
+        assertTrue(palindrome.isPalindrome("a",offByN));
+    }
+
 }
